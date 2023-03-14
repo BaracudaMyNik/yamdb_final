@@ -14,7 +14,7 @@ jobs:
           python-version: 3.7
       - name: Install requirements
         run: |
-          cd api_yamdb
+          cd yamdb
           pip install --upgrade pip 
           pip install flake8 pep8-naming flake8-broken-line flake8-return flake8-isort
           pip install -r requirements.txt
@@ -42,7 +42,7 @@ jobs:
         with:
           push: true
           context: ./api_yamdb/
-          tags: ${{ secrets.DOCKER_USERNAME }}/api_yamdb:latest
+          tags: ${{ secrets.DOCKER_USERNAME }}/yamdb:latest
 
   deploy:
     name: Deploy
@@ -57,7 +57,7 @@ jobs:
           key: ${{ secrets.SSH_KEY }}
           passphrase: ${{ secrets.PASSPHRASE }}
           script: |
-            sudo docker pull ${{ secrets.DOCKER_USERNAME }}/api_yamdb
+            sudo docker pull ${{ secrets.DOCKER_USERNAME }}/yamdb
             sudo docker stop $(sudo docker ps -a -q)
             sudo docker-compose down -v
             touch .env
