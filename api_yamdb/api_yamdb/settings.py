@@ -1,7 +1,9 @@
 import os
 from datetime import timedelta
 
-SECRET_KEY = os.getenv('SECRET_KEY')
+from django.core.management.utils import get_random_secret_key
+
+SECRET_KEY = get_random_secret_key()
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -90,6 +92,7 @@ USE_I18N = True
 USE_L10N = True
 
 USE_TZ = True
+
 
 STATIC_URL = '/static/'
 # STATICFILES_DIRS необходимо закомментировать или удалить
