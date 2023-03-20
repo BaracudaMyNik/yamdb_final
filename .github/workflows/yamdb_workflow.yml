@@ -43,31 +43,6 @@ jobs:
           context: ./api_yamdb/
           push: true
           tags: ${{ secrets.DOCKER_USERNAME }}/yamdb:latest
-  copy_infra:
-    name: Copy docker-compose.yml, nginx.conf
-    runs-on: ubuntu-latest
-    needs: build_and_push_to_docker_hub
-    steps:
-    - name: Create projects directory
-      uses: appleboy/ssh-action@master
-      with:
-        host: ${{ secrets.HOST }}
-        username: ${{ secrets.USER }}
-        key: ${{ secrets.SSH_KEY }}
-        passphrase: ${{ secrets.PASSPHRASE }}
-        script: |
-          sudo rm -rf production/yamdb_final/
-          mkdir -p production/yamdb_final/
-    - name: Copy files
-      uses: garygrossgarten/github-action-scp@release
-      with:
-          local: infra/*
-          remote: /home/${{ secrets.USER }}/production/yamdb_final/
-          host: ${{ secrets.HOST }}
-          username: ${{ secrets.USER }}
-          privateKey: ${{ secrets.SSH_KEY }}
-          passphrase: ${{ secrets.PASSPHRASE }}
-
 
   deploy:
     runs-on: ubuntu-latest
