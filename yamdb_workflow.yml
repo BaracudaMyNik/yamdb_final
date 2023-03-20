@@ -56,10 +56,10 @@ jobs:
           key: ${{ secrets.SSH_KEY }}
           passphrase: ${{ secrets.PASSPHRASE }}
           script: |
-            sudo docker pull ${{ secrets.DOCKER_USERNAME }}/hungry_ramanujan
+            sudo docker pull ${{ secrets.DOCKER_USERNAME }}/yamdb
             sudo docker-compose stop
-            sudo docker rm hungry_ramanujan -f
-            sudo docker rmi baracuda1975/hungry_ramanujan
+            sudo docker rm yamdb -f
+            sudo docker rmi baracuda1975/yamdb
             sudo docker-compose up -d 
 
   send_message:
