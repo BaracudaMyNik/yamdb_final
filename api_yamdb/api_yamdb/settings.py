@@ -2,11 +2,6 @@ import os
 from datetime import timedelta
 
 from django.core.management.utils import get_random_secret_key
-from dotenv import load_dotenv
-
-dotenv_path = os.path.join(os.path.dirname(__file__), '.env')
-if os.path.exists(dotenv_path):
-    load_dotenv(dotenv_path)
 
 SECRET_KEY = get_random_secret_key()
 
@@ -97,7 +92,6 @@ USE_I18N = True
 USE_L10N = True
 
 USE_TZ = True
-
 
 STATIC_URL = '/static/'
 # STATICFILES_DIRS необходимо закомментировать или удалить
