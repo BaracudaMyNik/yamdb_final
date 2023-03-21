@@ -1,5 +1,5 @@
 ## CI и CD проекта api_yamdb
-[![](https://github.com/BaracudaMyNik/yamdb_final/actions/workflows/yamdb_workflow.yml/badge.svg)](https://github.com/BaracudaMyNik/yamdb_final/actions/workflows/yamdb_workflow.yml)
+
 
 
 ![example branch parameter](https://github.com/BaracudaMyNik/yamdb_final/actions/workflows/yamdb_workflow.yml/badge.svg)
@@ -39,9 +39,9 @@ pytest
 Отредактируйте файл `nginx/default.conf` и в строке `server_name` впишите IP виртуальной машины (сервера).  
 Скопируйте подготовленные файлы `docker-compose.yaml` и `nginx/default.conf` из вашего проекта на сервер:
 ```
-scp docker-compose.yaml <username>@<host>/home/<username>/docker-compose.yaml
+scp docker-compose.yaml <username>@<host>:home/<username>/docker-compose.yaml
 sudo mkdir nginx
-scp default.conf <username>@<host>/home/<username>/nginx/default.conf
+scp default.conf <username>@<host>:home/<username>/nginx/default.conf
 ```
 В репозитории на Гитхабе добавьте данные в `Settings - Secrets - Actions secrets`:
 ```

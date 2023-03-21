@@ -53,7 +53,7 @@ jobs:
           with:
             push: true
             context: ./api_yamdb/
-            tags: BaracudaMyNik/api_yamdb:latest
+            tags: toosergey/api_yamdb:latest
 
         - name: Send message if build_and_push_to_docker_hub failed
           if: ${{ failure() }}
