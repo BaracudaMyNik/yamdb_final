@@ -9,7 +9,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 DEBUG = False
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = ['158.160.15.110', 'sergey.zapto.org']
 
 INSTALLED_APPS = [
     'django.contrib.admin',
