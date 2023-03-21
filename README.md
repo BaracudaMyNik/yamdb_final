@@ -2,7 +2,7 @@
 
 
 
-![example branch parameter](https://github.com/BaracudaMyNik/yamdb_final/actions/workflows/yamdb_workflow.yml/badge.svg)
+![example branch parameter](https://github.com/bracudamnk/yamdb_final/actions/workflows/yamdb_workflow.yml/badge.svg)
 
 [![Python](https://img.shields.io/badge/-Python-464646?style=flat&logo=Python&logoColor=56C0C0&color=008080)](https://www.python.org/)
 [![Django](https://img.shields.io/badge/-Django-464646?style=flat&logo=Django&logoColor=56C0C0&color=008080)](https://www.djangoproject.com/)
