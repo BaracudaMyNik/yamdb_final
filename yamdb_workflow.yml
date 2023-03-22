@@ -80,7 +80,7 @@ jobs:
             cd yamdb_final/infra
             sudo docker compose down
             sudo docker container rm yamdb
-            sudo docker rmi web
+            sudo docker rmi yamdb
             sudo docker pull baracuda1975/yamdb:latest
             touch .env
             echo DB_ENGINE=${{ secrets.DB_ENGINE }} >> .env
