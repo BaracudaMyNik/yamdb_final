@@ -79,7 +79,7 @@ jobs:
           script: |
             cd yamdb_final/infra
             sudo docker compose down
-            sudo docker container rm yamdb
+            sudo docker container rm web
             sudo docker rmi web
             sudo docker pull baracuda1975/yamdb:latest
             touch .env
