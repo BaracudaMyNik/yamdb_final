@@ -1,7 +1,11 @@
 name: yamdb_workflow
 
 on:
-  push
+  push:
+    branches:
+      - master
+      - main
+
 jobs:
   tests:
     runs-on: ubuntu-latest
@@ -18,7 +22,7 @@ jobs:
 
     - name: Install dependencies
       run: |
-        python3 -m pip install --upgrade pip
+        python -m pip install --upgrade pip
         pip install flake8 pytest
         pip install -r requirements.txt
     - name: Test flake8
@@ -73,18 +77,16 @@ jobs:
           key: ${{ secrets.SSH_KEY }}
           passphrase: ${{ secrets.PASSPHRASE }}
           script: |
-            sudo docker compose down
-            sudo docker container rm web --force
-            sudo docker container rmi web
-            sudo docker pull web
+            sudo docker-compose stop
+            sudo docker-compose rm web
             touch .env
-            echo DB_ENGINE=${{ secrets.DB_ENGINE }} > .env
+            echo DB_ENGINE=${{ secrets.DB_ENGINE }} >> .env
             echo DB_NAME=${{ secrets.DB_NAME }} >> .env
             echo POSTGRES_USER=${{ secrets.POSTGRES_USER }} >> .env
             echo POSTGRES_PASSWORD=${{ secrets.POSTGRES_PASSWORD }} >> .env
             echo DB_HOST=${{ secrets.DB_HOST }} >> .env
             echo DB_PORT=${{ secrets.DB_PORT }} >> .env
-            sudo docker compose up -d
+            sudo docker-compose up -d
       - name: Send message if deploy failed
         if: ${{ failure() }}
         uses: appleboy/telegram-action@master
@@ -103,5 +105,4 @@ jobs:
         with:
           to: ${{ secrets.TELEGRAM_TO }}
           token: ${{ secrets.TELEGRAM_TOKEN }}
-          message: ${{ github.workflow }} успешно выполнен! Коммит  ${{ github.event.commits[0].message }}
           message: ${{ github.workflow }} успешно выполнен! Коммит  ${{ github.event.commits[0].message }}
