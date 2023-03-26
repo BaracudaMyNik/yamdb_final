@@ -137,4 +137,4 @@ POST http://127.0.0.1:8000/api/v1/auth/users/me/
     }
 
 # Автор проекта:
-- [Алмаз Миннибаев](https://github.com/Duckin1)
+- [Постнов Сергей](https://github.com/BaracudaMyNik)
