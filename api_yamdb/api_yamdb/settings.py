@@ -1,25 +1,18 @@
 import os
 from datetime import timedelta
 
-from django.core.management.utils import get_random_secret_key
-from dotenv import load_dotenv
-
-load_dotenv()
-
-SECRET_KEY = get_random_secret_key()
-
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
+# SECURITY WARNING: keep the secret key used in production secret!
+SECRET_KEY = 'p&l%385148kslhtyn^##a1)ilz@4zqj=rq&agdol^##zgl9(vs'
+# source code ''
+
+# SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['sergey.zapto.org',
-                 '127.0.0.1',
-                 'localhost',
-                 '158.160.15.110',
-                 'https://sergey.zapto.org',
-                 'www.sergey.zapto.org',
-                 'sergey.zapto.org',
-                 ]
+ALLOWED_HOSTS = ['*']
+
+# Application definition
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -65,6 +58,8 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'api_yamdb.wsgi.application'
 
+# Database
+
 DATABASES = {
     'default': {
         'ENGINE': os.getenv('DB_ENGINE', default='django.db.backends.postgresql'),
@@ -75,6 +70,8 @@ DATABASES = {
         'PORT': os.getenv('DB_PORT', default='5432')
     }
 }
+
+# Password validation
 
 AUTH_PASSWORD_VALIDATORS = [
     {
@@ -91,6 +88,8 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+# Internationalization
+
 LANGUAGE_CODE = 'en-us'
 
 TIME_ZONE = 'UTC'
@@ -101,19 +100,23 @@ USE_L10N = True
 
 USE_TZ = True
 
+# Static files (CSS, JavaScript, Images)
+
 STATIC_URL = '/static/'
-# STATICFILES_DIRS необходимо закомментировать или удалить
+
 # STATICFILES_DIRS = (os.path.join(BASE_DIR, 'static/'),)
+
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
 MEDIA_URL = '/media/'
+
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 EMAIL_BACKEND = 'django.core.mail.backends.filebased.EmailBackend'
 
 EMAIL_FILE_PATH = os.path.join(BASE_DIR, 'sent_emails')
 
-# DEFAULT_FROM_EMAIL = 'admin@yamdb.com'
+DEFAULT_FROM_EMAIL = 'admin@yamdb.com'
 
 REST_FRAMEWORK = {
     "DEFAULT_AUTHENTICATION_CLASSES": [
@@ -131,4 +134,4 @@ SIMPLE_JWT = {
 
 AUTH_USER_MODEL = 'users.User'
 
-CONTACT_EMAIL = 'toosergey@yandex.ru'
+CONTACT_EMAIL = 'almaz200@bk.ru'
